@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="home">
+    <h1>{{status}}</h1>
+        <h2 class="status">Extruder: {{tempTool_current}}/{{tempTool_target}}</h2>
+            <h3 class={{toolStatus_safety}}>{{toolStatus}}</h3>
+        <h2 class="status">Bed: {{tempBed_current}}/{{tempBed_target}}</h2>
+            <h3 class={{bedStatus_safety}}>{{bedStatus}}</h3> 
+</div>
+{% endblock %}
