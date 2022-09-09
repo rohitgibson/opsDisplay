@@ -7,13 +7,10 @@ import concurrent.futures as cf
 
 app=Flask(__name__)
 
-OctoPrint_instance = "10.32.46.211"
-API_key = "F691A0A08DE24F4F8DE536A2C9790E27" #F691A0A08DE24F4F8DE536A2C9790E27 for bb465-test; 593425E324D842BCB2938C7D8E583B76 for local
+OctoPrint_instance = "127.0.0.1:5000"
+API_key = "593425E324D842BCB2938C7D8E583B76" #F691A0A08DE24F4F8DE536A2C9790E27 for bb465-test; 593425E324D842BCB2938C7D8E583B76 for local
 
 @app.route('/', methods=['GET'])
-def set_status():
-    pass
-
 def sample_status():
     os.environ["NO_PROXY"] = "127.0.0.1"
     tempTool = requests.get(f"http://{OctoPrint_instance}/api/printer/tool", headers={"X-Api-Key":API_key}, verify=False)
