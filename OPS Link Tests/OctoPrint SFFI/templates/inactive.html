@@ -1,12 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
-<body onload="JavaScript:timedRefresh(500);">
-<div class="home">
-    <h1>{{status}}</h1>
-        <h2 class="display-3" style="font-weight: bold;">Extruder: {{tempTool_current}}/{{tempTool_target}}</h2>
-            <h3 class={{toolStatus_safety}}>{{toolStatus}}</h3>
-        <h2 class="display-3" style="font-weight: bold;">Bed: {{tempBed_current}}/{{tempBed_target}}</h2>
-            <h3 class={{bedStatus_safety}}>{{bedStatus}}</h3> 
+<div>
+    <hr />
+    <div>
+        <!--displays current extruder temp and status summary-->
+        <h3 class="display-1" style="font-size: 300%;">Extruder<br /><span style="font-weight:bold; font-size: 200%;">{{tempTool_current}}</span></h3>
+        <h3 style="font-size: 250%;"><span class="badge rounded-pill text-bg-dark">{{toolStatus}}</span>&nbsp;<span class="badge rounded-pill text-bg-dark">{{toolState}}</h3><br />
+        <!--displays current bed temp and status summary-->
+        <h3 class="display-1" style="font-size: 300%;">Bed<br /><span style="font-weight:bold; font-size: 200%;">{{tempBed_current}}</span></h3>
+        <h3 style="font-size: 250%;"><span class="badge rounded-pill text-bg-dark">{{bedStatus}}</span>&nbsp;<span class="badge rounded-pill text-bg-dark">{{bedState}}</h3>
+    </div>
 </div>
-</body>
 {% endblock %}
