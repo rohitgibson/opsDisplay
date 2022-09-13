@@ -6,12 +6,12 @@ import time
 from flask import Flask, render_template, request, url_for
 import concurrent.futures as cf
 import datetime as dt
-import data_processing as dp
 
 app=Flask(__name__)
 
 OctoPrint_instance = "127.0.0.1:5000"
-API_key = "60F9D39D7BED47E793A89BA01156B141" #F691A0A08DE24F4F8DE536A2C9790E27 for bb465-test; 593425E324D842BCB2938C7D8E583B76 for local
+
+API_key = "593425E324D842BCB2938C7D8E583B76" #"60F9D39D7BED47E793A89BA01156B141" for ubuntu local #F691A0A08DE24F4F8DE536A2C9790E27 for bb465-test; 593425E324D842BCB2938C7D8E583B76 for local
 
 prev_timeleft = ""
 prev_tooltemp = ""
