@@ -52,16 +52,16 @@ def sample_status():
         elif toolData_current > toolData_target:
             toolData_state = "cooling"
 
-        """
-        Bed Data
+        
+        ##Bed Data##
 
-        tempBed (request object) refers to all printer bed temperature data
-        bedData is the raw response data for tempBed
-        bedData_json is bedData converted into json
-        bedData_select subsets bedData_json for all items under the "bed" json object
-        bedData_current is the current bed temperature (in degrees C)
-        bedData_target is the current target bed temperature (in degrees C)
-        """
+        #tempBed (request object) refers to all printer bed temperature data
+        #bedData is the raw response data for tempBed
+        #bedData_json is bedData converted into json
+        #bedData_select subsets bedData_json for all items under the "bed" json object
+        #bedData_current is the current bed temperature (in degrees C)
+        #bedData_target is the current target bed temperature (in degrees C)
+        
         
         tempBed = requests.get(f"http://{OctoPrint_instance}/api/printer/bed", headers={"X-Api-Key":API_key}, verify=False)
             
@@ -117,7 +117,7 @@ def sample_status():
                 statusData_completion = 100
                 printer_status = "Stopped"
 
-                return render_template("stopped.html", status=printer_status, 
+                return render_template("stopped.jinja2", status=printer_status, 
                     tempTool_current = toolData_current, 
                     tempTool_target = toolData_target,
                     toolStatus = toolData_safety,
@@ -156,7 +156,7 @@ def sample_status():
                     else:
                         printer_status = "Inactive"
 
-                    return render_template("printing.html", status=printer_status, 
+                    return render_template("printing.jinja2", status=printer_status, 
                         tempTool_current = toolData_current, 
                         tempTool_target = toolData_target,
                         toolStatus = toolData_safety,
@@ -171,7 +171,7 @@ def sample_status():
                 elif statusData_printstatus == "Paused" or statusData_printstatus == "Pausing":
                     printer_status = statusData_printstatus
 
-                    return render_template("paused.html", status=printer_status, 
+                    return render_template("paused.jinja2", status=printer_status, 
                         tempTool_current = toolData_current, 
                         tempTool_target = toolData_target,
                         toolStatus = toolData_safety,
@@ -189,7 +189,7 @@ def sample_status():
         else: 
             printer_status = "Inactive"
 
-            return render_template("inactive.html", status=printer_status, 
+            return render_template("inactive.jinja2", status=printer_status, 
                 tempTool_current = toolData_current, 
                 tempTool_target = toolData_target,
                 toolStatus = toolData_safety,
@@ -201,7 +201,7 @@ def sample_status():
     except Exception:
         printer_status = "Offline"
 
-        return render_template("offline.html", status=printer_status)
+        return render_template("offline.jinja2", status=printer_status)
 
     #tool identifier
 
